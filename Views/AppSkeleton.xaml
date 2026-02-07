@@ -53,6 +53,11 @@
                         <FontIcon Glyph="&#xEC27;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItem Content="VPN" Tag="VPN">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE968;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
             <Grid>
                 <Grid Canvas.ZIndex="100" x:Name="LoadingBackground" Visibility="Collapsed">

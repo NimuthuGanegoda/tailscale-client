@@ -73,6 +73,9 @@ public sealed partial class AppSkeleton : Page, INotifyPropertyChanged
             case "Settings":
                 whereTo = typeof(Settings);
                 break;
+            case "VPN":
+                whereTo = typeof(VPNSettings);
+                break;
         }
 
         if (whereTo != null)
