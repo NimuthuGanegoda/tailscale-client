@@ -975,7 +975,7 @@ public class Types
 
     public enum VPNProtocol
     {
-        PPTP,
+        PPTP,      // Warning: PPTP is deprecated and insecure
         L2TP,
         OpenVPN,
         IKEv2

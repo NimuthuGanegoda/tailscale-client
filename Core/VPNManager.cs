@@ -195,7 +195,7 @@ internal static class VPNManager
             if (connectProcess.ExitCode == 0)
             {
                 config.IsConnected = true;
-                config.LastConnected = DateTime.Now;
+                config.LastConnected = DateTime.UtcNow;
                 _activeConnection = config;
                 
                 // Update the configuration in the list

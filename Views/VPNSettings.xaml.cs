@@ -93,6 +93,28 @@ public sealed partial class VPNSettings : Page, INotifyPropertyChanged
             {
                 var config = configs[index];
                 
+                // Warn about PPTP security
+                if (config.Protocol == Types.VPNProtocol.PPTP)
+                {
+                    var warningDialog = new ContentDialog
+                    {
+                        Title = "Security Warning",
+                        Content = "PPTP is a deprecated protocol with known security vulnerabilities. It is not recommended for use. Consider using L2TP, OpenVPN, or IKEv2 instead.\n\nDo you want to continue?",
+                        PrimaryButtonText = "Continue Anyway",
+                        CloseButtonText = "Cancel",
+                        DefaultButton = ContentDialogButton.Close,
+                        XamlRoot = this.XamlRoot
+                    };
+                    
+                    var result = await warningDialog.ShowAsync();
+                    if (result != ContentDialogResult.Primary)
+                    {
+                        button.IsEnabled = true;
+                        button.Content = "Connect";
+                        return;
+                    }
+                }
+                
                 // Check if password is set
                 if (string.IsNullOrEmpty(config.Password))
                 {
@@ -231,9 +253,10 @@ public sealed partial class VPNSettings : Page, INotifyPropertyChanged
         var passwordBox = new PasswordBox { PlaceholderText = "Password (optional)", Password = config.Password ?? "", Margin = new Thickness(0, 4, 0, 4) };
         
         var protocolCombo = new ComboBox { Margin = new Thickness(0, 4, 0, 4), HorizontalAlignment = HorizontalAlignment.Stretch };
-        protocolCombo.Items.Add("PPTP");
+        protocolCombo.Items.Add("PPTP (Deprecated - Insecure)");
         protocolCombo.Items.Add("L2TP");
         protocolCombo.Items.Add("OpenVPN");
+        protocolCombo.Items.Add("IKEv2");
         protocolCombo.SelectedIndex = (int)config.Protocol;
 
         var stackPanel = new StackPanel();
