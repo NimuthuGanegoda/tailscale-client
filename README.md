@@ -18,6 +18,7 @@ It aims to provide a modern, clean, and feature-rich Tailscale client for Window
 - [x] Device details and copy (such as IP, domain, etc.)
 - [x] Exit nodes
 - [x] Settings (Run unattended, allow Tailscale DNS, accept subnets)
+- [x] VPN Support (Configure and connect to external VPN services like VPNBook)
 - [ ] Taildrop
 
 ### Preview
@@ -31,6 +32,29 @@ It aims to provide a modern, clean, and feature-rich Tailscale client for Window
 
 Grab the installer from the [CDN x64](https://tsc.xirreal.dev/TailscaleClient-win-x64-Setup.exe)/[CDN arm64](https://tsc.xirreal.dev/TailscaleClient-win-arm64-Setup.exe) or from the [latest release](https://github.com/uwu/tailscale-client/releases/latest).
 Portable versions are also available in [releases](https://github.com/uwu/tailscale-client/releases/latest) without automatic updates.
+
+## VPN Support
+
+This Tailscale client now includes support for connecting to external VPN services alongside your Tailscale network. This allows you to use free VPN services like [VPNBook](https://www.vpnbook.com/) or other VPN providers while maintaining your Tailscale connections.
+
+### Features
+- Configure multiple VPN servers (PPTP, L2TP, OpenVPN, IKEv2)
+- Pre-configured VPNBook server templates
+- Easy-to-use interface for managing VPN credentials
+- Connect/disconnect from VPN services directly from the app
+- VPN connection status monitoring
+
+### Usage
+1. Navigate to the "VPN" tab in the application
+2. Click "Add VPN Configuration" to add a new VPN server or edit existing pre-configured servers
+3. For VPNBook servers, visit [vpnbook.com](https://www.vpnbook.com/) to get the current password
+4. Enter the credentials and click "Connect"
+
+> [!NOTE]
+> - PPTP and L2TP connections use Windows built-in VPN capabilities
+> - OpenVPN connections require the OpenVPN client to be installed separately
+> - Administrator privileges may be required to create VPN connections
+> - VPN credentials are stored locally on your device
 
 ## Building and running
 0. Prerequisites

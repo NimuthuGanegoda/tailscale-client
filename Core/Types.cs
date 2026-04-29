@@ -972,4 +972,23 @@ public class Types
             return warningsList;
         }
     }
+
+    public enum VPNProtocol
+    {
+        PPTP,      // Warning: PPTP is deprecated and insecure
+        L2TP,
+        OpenVPN,
+        IKEv2
+    }
+
+    public class VPNConfiguration
+    {
+        public string Name { get; set; }
+        public string ServerAddress { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public VPNProtocol Protocol { get; set; }
+        public bool IsConnected { get; set; }
+        public DateTime LastConnected { get; set; }
+    }
 }
