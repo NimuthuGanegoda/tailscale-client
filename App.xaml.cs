@@ -6,9 +6,9 @@ namespace TailscaleClient;
 
 public partial class App : Application
 {
-    public static MainWindow MainWindow { get; set; }
-
-    public static bool CanCloseWindow { get; set; }
+    public static Window MainWindow { get; set; }
+    public static bool CanCloseWindow { get; set; } = false;
+    public static string UpdateError { get; set; } = null;
 
     public App()
     {
@@ -16,7 +16,7 @@ public partial class App : Application
         InitializeComponent();
 
         var mgr = new UpdateManager("https://tsc.xirreal.dev");
-        
+
         try
         {
             var newVersion = mgr.CheckForUpdates();
@@ -29,9 +29,11 @@ public partial class App : Application
             mgr.ApplyUpdatesAndRestart(newVersion);
         } catch (Exception e)
         {
-            // TODO: Show failed update bar, possibly a badge on settings?
+            System.Diagnostics.Debug.WriteLine($"[App] Update check failed: {e.Message}");
+            UpdateError = e.Message;
             return;
         }
+    }
     }
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)

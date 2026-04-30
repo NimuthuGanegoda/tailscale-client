@@ -124,7 +124,7 @@ internal static class VPNManager
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Error connecting to VPN: {ex.Message}");
+            Debug.WriteLine($"[VPNManager.ConnectVPN] Error connecting to VPN: {ex.Message}");
             return false;
         }
     }
@@ -216,7 +216,7 @@ internal static class VPNManager
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Error in ConnectWindowsVPN: {ex.Message}");
+            Debug.WriteLine($"[VPNManager.ConnectWindowsVPN] Error: {ex.Message}");
             return false;
         }
     }
@@ -275,7 +275,7 @@ internal static class VPNManager
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Error disconnecting VPN: {ex.Message}");
+            Debug.WriteLine($"[VPNManager.DisconnectVPN] Error: {ex.Message}");
             return false;
         }
     }
@@ -308,7 +308,7 @@ internal static class VPNManager
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Error loading VPN configurations: {ex.Message}");
+            Debug.WriteLine($"[VPNManager.LoadConfigurations] Error: {ex.Message}");
             _configurations = new List<Types.VPNConfiguration>();
         }
     }
@@ -328,7 +328,7 @@ internal static class VPNManager
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Error saving VPN configurations: {ex.Message}");
+            Debug.WriteLine($"[VPNManager.SaveConfigurations] Error: {ex.Message}");
         }
     }
 }

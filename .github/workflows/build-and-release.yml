@@ -6,6 +6,7 @@ on:
       - '**'
     tags:
       - v**
+  workflow_dispatch:
 
 jobs:
   build:
@@ -74,11 +75,11 @@ jobs:
 
       - name: Package x64
         run: |
-          vpk [win] pack --packId TailscaleClient --packVersion "$(cat ./version.txt | tr -d '\r\n')" --packDir ./x64 --channel win-x64 --framework net8.0-x64-runtime -y
+          vpk [win] pack --packId TailscaleClient --packVersion "$(cat ./version.txt | tr -d '\r\n')" --packDir ./x64 --channel win-x64 --framework net8.0-x64-runtime --msi -y
 
       - name: Package arm64
         run: |
-          vpk [win] pack --packId TailscaleClient --packVersion "$(cat ./version.txt | tr -d '\r\n')" --packDir ./arm64 --channel win-arm64 --framework net8.0-arm64-runtime -y
+          vpk [win] pack --packId TailscaleClient --packVersion "$(cat ./version.txt | tr -d '\r\n')" --packDir ./arm64 --channel win-arm64 --framework net8.0-arm64-runtime --msi -y
 
       - name: Upload to R2
         env:

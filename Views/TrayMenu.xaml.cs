@@ -53,6 +53,9 @@ public sealed partial class TrayMenu : UserControl, INotifyPropertyChanged
         {
             TrayIcon.Dispose();
         }
-        catch { }
+        catch (System.Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[TrayMenu] Failed to dispose TrayIcon: {ex.Message}");
+        }
     }
 }

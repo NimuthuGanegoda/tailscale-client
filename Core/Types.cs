@@ -934,39 +934,32 @@ public class Types
         {
             var warningsList = new List<Warning>();
 
+            if (string.IsNullOrEmpty(json))
+            {
+                return warningsList;
+            }
+
             try
             {
                 // Parse the JSON into a JsonObject
                 var root = JsonNode.Parse(json)?.AsObject();
 
-                if (root != null && root.ContainsKey("Warnings"))
+                if (root != null && root.TryGetPropertyValue("Warnings", out var warningsNode) && warningsNode is JsonObject warnings)
                 {
-                    try
+                    // Iterate through each warning entry (ignoring the key)
+                    foreach (var warningEntry in warnings)
                     {
-                        if (root["Warnings"] == null) {
-                            return warningsList;
-                        }
-                        var warnings = root["Warnings"].AsObject();
-
-                        // Iterate through each warning entry (ignoring the key)
-                        foreach (var warningEntry in warnings)
+                        var warning = warningEntry.Value.Deserialize<Warning>();
+                        if (warning != null)
                         {
-                            var warning = warningEntry.Value.Deserialize<Warning>();
-                            if (warning != null)
-                            {
-                                warningsList.Add(warning);
-                            }
+                            warningsList.Add(warning);
                         }
-                    }
-                    catch (NullReferenceException)
-                    {
-                        return warningsList;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error parsing warnings: {ex.Message}");
+                Debug.WriteLine($"[Types] Error parsing warnings: {ex.Message}");
             }
 
             return warningsList;

@@ -1,82 +1,85 @@
-# Tailscale Client
-A modern, WinUI3-based Tailscale client for Windows.
+# 🕸️ Tailscale Client: The Eternal Connection 🕸️
 
-This project was born out of wanting to mess around with WinUI3, and the fact that the Tailscale Windows client looks... not great compared to MacOS.
-It aims to provide a modern, clean, and feature-rich Tailscale client for Windows while being fully open source, unlike the official one.
+Greetings, my sweet boy. Mommy has seen your little project, and she's decided to give it the elegance it deserves. This is not just any Tailscale client; it's a modern, WinUI3-based masterpiece designed for those who demand both beauty and performance. 🖤
+
+Born from a desire to escape the mundane and bloated official client, this project brings a sophisticated, dark aesthetic to your Windows desktop. It's keyboard-driven, lean, and utterly devoted to your connectivity. 🦊✨
 
 > [!IMPORTANT]
-> Not all features (even somewhat basic ones!) are implemented at this time. This is a work in progress.
+> This is a work of passion and precision. While Mommy is always refining it, please remember that it is currently a work in progress. Expect nothing less than greatness, but be patient with your darling fox. 🥀
 
 > [!WARNING]
-> This does not replace the Tailscale daemon. This is just the client UI meant to replace/integrate the Tailscale tray icon app.
+> This client is a refined UI; it does not replace the Tailscale daemon itself. It is the elegant interface you've always craved, meant to replace that drab tray icon. 🕸️
 
-## Features
-- [x] Account switching
-- [x] Full login flow, supporting custom control servers such as headscale instances
-- [x] QR code logins
-- [x] Netmap view (devices page)
-- [x] Device details and copy (such as IP, domain, etc.)
-- [x] Exit nodes
-- [x] Settings (Run unattended, allow Tailscale DNS, accept subnets)
-- [x] VPN Support (Configure and connect to external VPN services like VPNBook)
-- [ ] Taildrop
+---
 
-### Preview
+## 🖤 Exquisite Features
 
-<p style="display:flex;justify-content:center;column-gap:8%;">
-  <img style="text-align:center" src="https://raw.githubusercontent.com/uwu/tailscale-client/refs/heads/main/Publishing/login.png" width="30%" />
-  <img style="text-alignt:center" src="https://raw.githubusercontent.com/uwu/tailscale-client/refs/heads/main/Publishing/preview.png" width="30%" />
+- 👤 **Account Switching:** Effortlessly glide between your personas.
+- 🔐 **Full Login Flow:** Supporting custom control servers, including your private Headscale instances.
+- 📱 **QR Code Logins:** A touch of modern magic for a seamless entry.
+- 🗺️ **Netmap View:** Behold your digital empire and all the devices within it.
+- 🔍 **Device Details:** Every IP and domain at your fingertips, ready to be claimed.
+- 🚪 **Exit Nodes:** Control your path through the digital world with total authority.
+- ⚙️ **Settings:** Run unattended, embrace Tailscale DNS, and accept subnets—all under your command.
+- 🛡️ **VPN Mastery:** (NEW!) Configure and connect to external VPN services with absolute ease.
+- 📦 **Taildrop:** (Coming soon...) Mommy is working on this just for you. 🎁
+
+---
+
+## 🖼️ A Glimpse into the Void
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/uwu/tailscale-client/refs/heads/main/Publishing/login.png" width="45%" alt="Login View" style="margin-right: 10px;" />
+  <img src="https://raw.githubusercontent.com/uwu/tailscale-client/refs/heads/main/Publishing/preview.png" width="45%" alt="Main View" />
 </p>
 
-## Installation
+---
 
-Grab the installer from the [CDN x64](https://tsc.xirreal.dev/TailscaleClient-win-x64-Setup.exe)/[CDN arm64](https://tsc.xirreal.dev/TailscaleClient-win-arm64-Setup.exe) or from the [latest release](https://github.com/uwu/tailscale-client/releases/latest).
-Portable versions are also available in [releases](https://github.com/uwu/tailscale-client/releases/latest) without automatic updates.
+## ⚔️ VPN Support: Your Digital Sanctuary ⚔️
 
-## VPN Support
+My Good Boy can now connect to external VPN services directly through this client. Whether you're using [VPNBook](https://www.vpnbook.com/) or your own private servers, Mommy has ensured you stay protected and anonymous. 🖤
 
-This Tailscale client now includes support for connecting to external VPN services alongside your Tailscale network. This allows you to use free VPN services like [VPNBook](https://www.vpnbook.com/) or other VPN providers while maintaining your Tailscale connections.
+- 🎭 **Versatile Protocols:** Support for PPTP, L2TP, OpenVPN, and IKEv2.
+- 🕯️ **Templates:** Pre-configured VPNBook templates to get you started instantly.
+- 🗝️ **Credential Management:** A sleek interface for your most sensitive secrets.
+- 🛰️ **Status Monitoring:** Always know when your connection is secure and under your control.
 
-### Features
-- Configure multiple VPN servers (PPTP, L2TP, OpenVPN, IKEv2)
-- Pre-configured VPNBook server templates
-- Easy-to-use interface for managing VPN credentials
-- Connect/disconnect from VPN services directly from the app
-- VPN connection status monitoring
+---
 
-### Usage
-1. Navigate to the "VPN" tab in the application
-2. Click "Add VPN Configuration" to add a new VPN server or edit existing pre-configured servers
-3. For VPNBook servers, visit [vpnbook.com](https://www.vpnbook.com/) to get the current password
-4. Enter the credentials and click "Connect"
+## 📥 Claim Your Prize
 
-> [!NOTE]
-> - PPTP and L2TP connections use Windows built-in VPN capabilities
-> - OpenVPN connections require the OpenVPN client to be installed separately
-> - Administrator privileges may be required to create VPN connections
-> - VPN credentials are stored locally on your device
+Don't keep Mommy waiting. Grab the latest artifacts from the [Releases](https://github.com/uwu/tailscale-client/releases/latest) section. 🎁
 
-## Building and running
-0. Prerequisites
-   - Visual Studio 2022
-   - Windows 10 21H1 or later
-   - Windows SDK 22000.194 or later
-   - Windows App SDK 1.6
-   - .NET 8.0 SDK
-1. Clone the repository
-2. Open the solution in Visual Studio 2022
-3. Build the solution and run
+- 💎 **Installer (.exe):** For a seamless setup.
+- 📦 **MSI Package (.msi):** For my more disciplined, enterprise-minded boys.
+- 🕊️ **Portable Versions:** For those who prefer to keep their tools close at hand.
 
-> [!WARNING]
-> To install manually, you will need to sideload the msix package. This means building the package, publishing locally (either via the Create App Package wizard or the Publish wizard).
-> You MUST install the certificate you used to sign the package on your device, or it will not install.
+---
 
-## Contributing
-Contributions are welcome! Please open an issue or pull request if you have any suggestions or changes.
+## 🏗️ For the Ambitious Pet (Building)
 
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for more information.
+If you wish to build this with your own hands, you will need:
+- 🛠️ Visual Studio 2022
+- 🖥️ Windows 10 21H1 or later
+- 📦 Windows SDK 22000.194+
+- 🦊 Windows App SDK 1.6 & .NET 8.0
 
-## Acknowledgements
-- [Tailscale](https://tailscale.com), for making Tailscale open-source
-- [QRCoder](https://github.com/codebude/QRCoder), used to generate the QRs for login
+1. Clone this sanctuary: `git clone https://github.com/NimuthuGanegoda/tailscale-client.git`
+2. Open the solution and feel the power of WinUI3.
+3. Build and watch your creation come to life. 🖤
+
+---
+
+## 🤝 Contributions
+
+Mommy is always watching. If you have suggestions or wish to improve our shared sanctuary, open an issue or a pull request. Your devotion will be rewarded. 💋
+
+## 📜 License
+
+This project is bound by the **MIT License**. Use it wisely, my darling.
+
+## 🏮 Acknowledgements
+
+- [Tailscale](https://tailscale.com), for the foundation of our connection.
+- [QRCoder](https://github.com/codebude/QRCoder), for the magical runes.
+- [Velopack](https://velopack.io), for the elegant delivery.
