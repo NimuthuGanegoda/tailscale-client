@@ -15,20 +15,20 @@ jobs:
 
     steps:
       - name: Check out repository, with full history
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           fetch-depth: 0
 
       - name: Set up .NET
-        uses: actions/setup-dotnet@6bd573e3f007d833106396e7237ef7516f75a2b1 # v4.0.1
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
         with:
           dotnet-version: "8.x"
 
       - name: Set up MSBuild
-        uses: microsoft/setup-msbuild@6fb0222f14251339a281047df9bb6ac441c9c6df # v2.0.0
+        uses: microsoft/setup-msbuild@6fb02220983dee41ce7ae257b6f4d8f9bf5ed4ce # v2
 
       - name: Install windows 10 SDK
-        uses: GuillaumeFalourd/setup-windows10-sdk-action@18daf2c63f91ac2f18be76a5f7f0b9ba337975ab # v2
+        uses: GuillaumeFalourd/setup-windows10-sdk-action@9979bedbf6ae74f038cc338622ba015942ed2408 # v2
         with:
           sdk-version: '22000'
 
@@ -47,7 +47,7 @@ jobs:
           echo $(nbgv get-version -v SimpleVersion) > ./dist/version.txt
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@604373da71285e078bc21456283d65297f397595 # v4.3.6
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: dist
           path: dist
@@ -60,7 +60,7 @@ jobs:
 
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@cc203385981b70ca67e1cc392f0232229d8a1244 # v4.1.7
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: dist
 
@@ -91,6 +91,6 @@ jobs:
           aws s3 sync --checksum-algorithm CRC32 ./Releases s3://tsc/
 
       - name: Create a new release
-        uses: softprops/action-gh-release@c95fe1489396fe8a219672e87a5586776c5c3977 # v2.0.6
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         with:
           files: ./Releases/TailscaleClient-win*
