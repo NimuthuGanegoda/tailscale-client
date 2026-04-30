@@ -166,12 +166,49 @@ internal static class VPNManager
                         CreateNoWindow = true,
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
-                        Verb = "runas" // May need admin rights
+                        Verb = "runas"
                     }
                 };
 
                 createProcess.Start();
                 await createProcess.WaitForExitAsync();
+
+                // Enable Split Tunneling if there are app triggers or if specifically requested
+                if (config.AppTriggers.Count > 0)
+                {
+                    var splitProcess = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = "powershell.exe",
+                            Arguments = $"-Command \"Set-VpnConnection -Name '{connectionName}' -SplitTunneling $true\"",
+                            UseShellExecute = false,
+                            CreateNoWindow = true,
+                            RedirectStandardOutput = true,
+                            RedirectStandardError = true
+                        }
+                    };
+                    splitProcess.Start();
+                    await splitProcess.WaitForExitAsync();
+
+                    foreach (var appPath in config.AppTriggers)
+                    {
+                        var triggerProcess = new Process
+                        {
+                            StartInfo = new ProcessStartInfo
+                            {
+                                FileName = "powershell.exe",
+                                Arguments = $"-Command \"Add-VpnConnectionTriggerApplication -Name '{connectionName}' -ApplicationID '{appPath}'\"",
+                                UseShellExecute = false,
+                                CreateNoWindow = true,
+                                RedirectStandardOutput = true,
+                                RedirectStandardError = true
+                            }
+                        };
+                        triggerProcess.Start();
+                        await triggerProcess.WaitForExitAsync();
+                    }
+                }
             }
 
             // Connect to the VPN

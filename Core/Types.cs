@@ -983,5 +983,6 @@ public class Types
         public VPNProtocol Protocol { get; set; }
         public bool IsConnected { get; set; }
         public DateTime LastConnected { get; set; }
+        public List<string> AppTriggers { get; set; } = new List<string>();
     }
 }

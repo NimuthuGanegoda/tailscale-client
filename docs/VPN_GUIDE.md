@@ -69,6 +69,27 @@ Custom VPN endpoints can be added manually:
 
 ---
 
+## App-Based Split Tunneling
+
+The Tailscale Client for Windows supports app-based split tunneling. This feature allows specific applications to trigger the VPN connection automatically and route their network traffic through the VPN tunnel, while other applications continue to use the local network or Tailscale.
+
+### Benefits
+
+*   **Traffic Optimization:** Ensure only high-priority or sensitive application traffic uses the VPN.
+*   **Reduced Latency:** Non-VPN apps maintain direct local or Tailscale connectivity.
+*   **Automatic Activation:** The VPN connection is established automatically when a registered application is launched.
+
+### Configuration
+
+1.  Navigate to the **VPN** tab and select **Edit** on a VPN configuration.
+2.  Locate the **Application Triggers (Split Tunneling)** section.
+3.  Click **"Add Application"** and browse to the `.exe` file of the application you wish to route.
+4.  Save the configuration.
+
+Upon launching the registered application, Windows will automatically initiate the VPN connection and apply the split tunneling rules.
+
+---
+
 ## Connection Management
 
 *   **Establish Connection:** Use the "Connect" button. The application will prompt for credentials if they are not stored.
