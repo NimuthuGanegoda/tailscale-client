@@ -34,7 +34,6 @@ public partial class App : Application
             return;
         }
     }
-    }
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
