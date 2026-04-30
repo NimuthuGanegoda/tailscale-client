@@ -15,20 +15,20 @@ jobs:
 
     steps:
       - name: Check out repository, with full history
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
 
       - name: Set up .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@6bd573e3f007d833106396e7237ef7516f75a2b1 # v4.0.1
         with:
           dotnet-version: "8.x"
 
       - name: Set up MSBuild
-        uses: microsoft/setup-msbuild@v2
+        uses: microsoft/setup-msbuild@6fb0222f14251339a281047df9bb6ac441c9c6df # v2.0.0
 
       - name: Install windows 10 SDK
-        uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
+        uses: GuillaumeFalourd/setup-windows10-sdk-action@18daf2c63f91ac2f18be76a5f7f0b9ba337975ab # v2
         with:
           sdk-version: '22000'
 
@@ -47,12 +47,12 @@ jobs:
           echo $(nbgv get-version -v SimpleVersion) > ./dist/version.txt
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@604373da71285e078bc21456283d65297f397595 # v4.3.6
         with:
           name: dist
           path: dist
 
-  release:
+    release:
     name: Release Package
     runs-on: ubuntu-latest
     needs: build
@@ -60,7 +60,7 @@ jobs:
 
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@cc203385981b70ca67e1cc392f0232229d8a1244 # v4.1.7
         with:
           name: dist
 
@@ -91,6 +91,6 @@ jobs:
           aws s3 sync --checksum-algorithm CRC32 ./Releases s3://tsc/
 
       - name: Create a new release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@c95fe1489396fe8a219672e87a5586776c5c3977 # v2.0.6
         with:
           files: ./Releases/TailscaleClient-win*
